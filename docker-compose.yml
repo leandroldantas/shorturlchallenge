@@ -1,0 +1,17 @@
+version: '3'
+services:
+  dbshort:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: shorturl
+      MYSQL_DATABASE: shorturl
+      MYSQL_ROOT_HOST: "%"
+    ports:
+      - 3306:3306
+  app:
+    image: mysimpleshorturl:latest
+    ports:
+      - 8080:8080
+      - 4848:4848
+    volumes:
+      - ./target/deploy:/opt/deploy
